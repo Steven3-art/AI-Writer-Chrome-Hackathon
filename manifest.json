@@ -1,0 +1,46 @@
+{
+    "manifest_version": 3,
+    "name": "AI Writer Chrome",
+    "version": "1.0",
+    "description": "Assistant de rédaction multiplateforme intégré au navigateur, alimenté par l'IA locale.",
+    "icons": {
+        "16": "assets/icons/icon16.png",
+        "48": "assets/icons/icon48.png",
+        "128": "assets/icons/icon128.png"
+    },
+    "action": {
+        "default_popup": "popup/popup.html",
+        "default_icon": "assets/icons/icon48.png"
+    },
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "tabs",
+        "storage",
+        "declarativeNetRequest" 
+        // Note: La permission pour l'API Chrome AI (Prompt API) est souvent gérée automatiquement 
+        // ou via des flags de navigateur pour le moment, mais on liste les permissions standard.
+    ],
+    "host_permissions": [
+        "*://*.linkedin.com/*",
+        "*://*.twitter.com/*",
+        "*://*.facebook.com/*",
+        "*://*.instagram.com/*",
+		"*://web.whatsapp.com/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.linkedin.com/*",
+                "*://*.twitter.com/*",
+                "*://*.facebook.com/*",
+                "*://*.instagram.com/*",
+				"*://web.whatsapp.com/*"
+            ],
+            "js": ["content/content.js"]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    }
+}
