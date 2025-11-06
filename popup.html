@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Writer | Générateur de Contenu IA</title>
+	<meta charset="UTF-8">
+    <style>
+        body { width: 300px; padding: 10px; font-family: sans-serif; }
+        h4 { margin-top: 5px; margin-bottom: 10px; color: #3b5998; }
+        label { display: block; margin-top: 10px; font-weight: bold; font-size: 0.9em; }
+        select, textarea { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { background-color: #4CAF50; color: white; padding: 10px; margin-top: 15px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 1em; }
+        #output { border: 1px solid #ddd; padding: 10px; min-height: 80px; margin-top: 15px; background-color: #f9f9f9; white-space: pre-wrap; word-wrap: break-word; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <h4>🧠 AI Writer Chrome</h4>
+
+    <form id="generationForm">
+        <label for="sujet">Sujet du Post :</label>
+        <textarea id="sujet" rows="3" placeholder="Ex: Lancement nouveau produit e-commerce" required></textarea>
+
+        <label for="plateforme">Plateforme :</label>
+        <select id="plateforme" required>
+            <option value="linkedin">LinkedIn</option>
+            <option value="twitter">Twitter/X</option>
+            <option value="facebook">Facebook</option>
+            <option value="instagram">Instagram</option>
+			<option value="whatsapp">Whatsapp</option>
+        </select>
+
+        <label for="ton">Ton :</label>
+        <select id="ton" required>
+            <option value="professionnel">Professionnel</option>
+            <option value="humoristique">Humoristique</option>
+            <option value="inspirant">Inspirant</option>
+            <option value="decontracte">Décontracté</option>
+        </select>
+
+        <label for="longueur">Longueur :</label>
+        <select id="longueur" required>
+            <option value="courte">Courte (~100 caractères)</option>
+            <option value="moyenne">Moyenne (~500 caractères)</option>
+            <option value="longue">Longue (~1000 caractères)</option>
+        </select>
+
+        <button type="submit" id="generateButton">Générer le Post IA</button>
+    </form>
+    
+    <label>Résultat de l'IA :</label>
+    <div id="output">Le contenu généré s'affichera ici.</div>
+
+    <script src="popup.js"></script>
+    <script src="../libs/chrome-ai.js"></script>
+</body>
+</html>
