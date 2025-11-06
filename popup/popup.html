@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Writer | Générateur de Contenu IA</title>
+	<meta charset="UTF-8">
+    <style>
+    /* ------------------- STYLES GENERAUX ------------------- */
+    body { 
+        width: 300px; 
+        padding: 15px; 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Police plus moderne */
+        background-color: #f0f2f5; /* Fond léger */
+        color: #1c1e21; /* Texte sombre */
+    }
+    h4 { 
+        margin-top: 0; 
+        margin-bottom: 15px; 
+        color: #3b5998; 
+        border-bottom: 2px solid #3b5998; /* Ligne de séparation */
+        padding-bottom: 5px;
+        font-size: 1.1em;
+    }
+    
+    /* ------------------- FORMULAIRE ------------------- */
+    label { 
+        display: block; 
+        margin-top: 10px; 
+        font-weight: 600; /* Plus épais que 'bold' */
+        font-size: 0.9em; 
+        color: #606770; 
+    }
+    select, textarea { 
+        width: 100%; 
+        padding: 8px 12px; 
+        margin-top: 5px; 
+        border: 1px solid #ddd; 
+        border-radius: 8px; /* Coins plus arrondis */
+        box-sizing: border-box; 
+        background-color: white;
+        transition: border-color 0.2s; /* Effet de transition */
+    }
+    select:focus, textarea:focus {
+        border-color: #3b5998; /* Surligner l'élément actif */
+        outline: none;
+    }
+
+    /* ------------------- BOUTON GENERER ------------------- */
+    button { 
+        background-color: #3b5998; /* Couleur plus professionnelle/Facebook-like */
+        color: white; 
+        padding: 12px; /* Plus d'espace */
+        margin-top: 20px; 
+        border: none; 
+        border-radius: 8px; 
+        cursor: pointer; 
+        width: 100%; 
+        font-size: 1em; 
+        font-weight: bold;
+        transition: background-color 0.2s;
+    }
+    button:hover:not(:disabled) {
+        background-color: #2b4578; /* Assombrissement au survol */
+    }
+    button:disabled {
+        background-color: #a8a8a8; /* Gris pour l'état désactivé */
+        cursor: not-allowed;
+    }
+
+    /* ------------------- ZONE DE SORTIE ------------------- */
+    #output { 
+        border: 1px solid #ccc; 
+        padding: 12px; 
+        min-height: 80px; 
+        margin-top: 15px; 
+        background-color: #ffffff; 
+        border-radius: 8px; 
+        white-space: pre-wrap; 
+        word-wrap: break-word; 
+        font-size: 0.9em; 
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Légère ombre */
+    }
+</style>
+</head>
+<body>
+    <h4>🧠 AI Writer Chrome</h4>
+
+    <form id="generationForm">
+        <label for="sujet">Sujet du Post :</label>
+        <textarea id="sujet" rows="3" placeholder="Ex: Lancement nouveau produit e-commerce" required></textarea>
+
+        <label for="plateforme">Plateforme :</label>
+        <select id="plateforme" required>
+            <option value="linkedin">LinkedIn</option>
+            <option value="twitter">Twitter/X</option>
+            <option value="facebook">Facebook</option>
+            <option value="instagram">Instagram</option>
+			<option value="whatsapp">Whatsapp</option>
+        </select>
+
+        <label for="ton">Ton :</label>
+        <select id="ton" required>
+            <option value="professionnel">Professionnel</option>
+            <option value="humoristique">Humoristique</option>
+            <option value="inspirant">Inspirant</option>
+            <option value="decontracte">Décontracté</option>
+        </select>
+
+        <label for="longueur">Longueur :</label>
+        <select id="longueur" required>
+            <option value="courte">Courte (~100 caractères)</option>
+            <option value="moyenne">Moyenne (~500 caractères)</option>
+            <option value="longue">Longue (~1000 caractères)</option>
+        </select>
+		
+		<div class="form-group">
+            <label for="mediaOption">Accompagné d'un média ?</label>
+            <select id="mediaOption" class="form-control">
+                <option value="none">Non (Texte seul)</option>
+                <option value="image">Oui (Image/Vidéo)</option>
+            </select>
+        </div>
+        <button type="submit" id="generateButton">Générer le Post IA</button>
+    </form>
+    
+    <label>Résultat de l'IA :</label>
+    <div id="output">Le contenu généré s'affichera ici.</div>
+
+    <script src="popup.js"></script>
+    <script src="../libs/chrome-ai.js"></script>
+</body>
+</html>
